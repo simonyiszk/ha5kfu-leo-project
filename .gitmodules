@@ -1,0 +1,12 @@
+[submodule "_OLD/AntennaRotator"]
+	path = _OLD/AntennaRotator
+	url = https://github.com/simonyiszk/AntennaRotator
+[submodule "esp8266-g5500-rotator"]
+	path = esp8266-g5500-rotator
+	url = https://github.com/simonyiszk/esp8266-g5500-rotator
+[submodule "70cm_preamp"]
+	path = 70cm_preamp
+	url = https://github.com/simonyiszk/70cm_preamp
+[submodule "ha5kfu-ft857-rigctl-emulator"]
+	path = ha5kfu-ft857-rigctl-emulator
+	url = https://github.com/simonyiszk/ha5kfu-ft857-rigctl-emulator

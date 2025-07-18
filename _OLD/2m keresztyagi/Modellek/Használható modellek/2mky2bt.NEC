@@ -1,0 +1,46 @@
+CM 
+CE
+SY d=0.415	'2 szomszédos elem távolsága
+SY Lreflektor=1.025	'A reflektor hossza
+SY Laktiv=0.972	'Az aktív elem hossza
+SY Ldirektor=0.920	'A direktor hossza
+SY r=0.004	'Az elemek sugara. A könyv szerint 2.5-4mm lehet.
+SY s=11	'Szegmensek száma
+SY lambdanegyed=0.5172	'145 MHz-en a negyedhullám
+SY kozepso=0.1367	'A gamma-illesztés hossza
+SY RNAGY=0.010	'A boom sugara
+SY GAMMA=0.020	'A gamma illesztés távolsága a boomtól
+SY LNAGY=2	'Az antennaforgató keresztrúdjának hossza
+SY RFORG=0.015	'Az antennaforgató kerestrúd sugara
+SY reaktancia=-30	'A hangoló kondi
+SY Eltolas=1.7
+GW	1	s	-d	0	-Lreflektor/2	-d	0	0	r	'reflektor
+GW	2	s	-d	0	0	-d	0	Lreflektor/2	r	'reflektor
+GW	3	s	0	0	-Laktiv/2	0	0	0	r	'aktív
+GW	4	s	0	0	0	0	0	Laktiv/2	r	'aktív
+GW	5	s	d	0	-LDIREKTOR/2	d	0	0	R	'Direktor
+GW	6	s	d	0	0	d	0	LDIREKTOR/2	R	'direktor
+GM	100	1	90	0	0	-lambdanegyed	0	0	1
+GW	13	11	D	0	0	0	0	0	RNAGY	'boom 1
+GW	14	5	0	0	0	-lambdanegyed+d	0	0	RNAGY	'boom 2
+GW	15	5	-lambdanegyed+d	0	0	-lambdanegyed/2	0	0	RNAGY	'boom3
+GW	16	5	-lambdanegyed/2	0	0	-d	0	0	RNAGY	'boom 4
+GW	17	5	-d	0	0	-lambdanegyed	0	0	RNAGY	'boom 5
+GW	18	11	-lambdanegyed	0	0	-d-lambdanegyed	0	0	RNAGY	'boom 6
+GM	0	0	0	0	0	lambdanegyed/2	0	-eltolas/2	1
+GM	1000	1	0	0	0	0	0	eltolas	1
+GW	2000	20	0	0	-eltolas/2	0	0	0	RNAGY
+GW	2001	20	0	0	0	0	0	eltolas/2	RNAGY
+GW	3000	20	0	-LNAGY/8	0	0	3/8*LNAGY	0	RFORG
+GW	4000	20	0	3/8*LNAGY	0	0	7/8*LNAGY	0	RFORG
+GW	5000	20	0	3/8*LNAGY	0	0	3/8*LNAGY	-2*LNAGY	RFORG
+GE	0
+LD	5	0	0	0	37700000
+GN	-1
+EK
+EX	0	4	1	0	1000	0	0
+EX	0	104	1	0	1000	0	0
+EX	0	1004	1	0	1000	0	0
+EX	0	1104	1	0	1000	0	0
+FR	0	0	0	0	145	0
+EN

@@ -1,0 +1,19 @@
+CM 
+CE
+SY D=0.415	'2 szomszédos elem távolsága
+SY LREFLEKTOR=1.025	'A reflektor hossza
+SY LAKTIV=0.972	'Az aktív elem hossza
+SY LDIREKTOR=0.920	'A direktor hossza
+SY R=0.004	'Az elemek sugara. A könyv szerint 2.5-4mm lehet.
+SY S=21	'Szegmensek száma
+SY LAMBDANEGYED=0.5172	'145 MHz-en a negyedhullám
+GW	1	s	-d	0	-LREFLEKTOR/2	-d	0	LREFLEKTOR/2	r	'reflektor
+GW	2	s	0	0	-LAKTIV/2	0	0	LAKTIV/2	r	'aktív
+GW	3	s	d	0	-LDIREKTOR/2	d	0	LDIREKTOR/2	r	'direktor
+GE	0
+LD	5	0	0	0	37700000
+GN	-1
+EK
+EX	0	2	(S-1)/2+1	0	1000	0	0	0
+FR	0	0	0	0	145	0
+EN

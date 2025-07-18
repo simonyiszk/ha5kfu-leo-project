@@ -1,0 +1,32 @@
+CM 
+CE
+SY d=0.415	'2 szomszédos elem távolsága
+SY Lreflektor=1.025	'A reflektor hossza
+SY Laktiv=0.972	'Az aktív elem hossza
+SY Ldirektor=0.920	'A direktor hossza
+SY r=0.004	'Az elemek sugara. A könyv szerint 2.5-4mm lehet.
+SY s=11	'Szegmensek száma
+SY lambdanegyed=0.5172	'145 MHz-en a negyedhullám
+SY kozepso=0.132	'A gamma-illesztés hossza
+SY RNAGY=0.010	'A boom sugara
+SY GAMMA=0.020	'A gamma illesztés távolsága a boomtól
+GW	1	s	-d	0	-Lreflektor/2	-d	0	0	r	'reflektor
+GW	2	s	-d	0	0	-d	0	Lreflektor/2	r	'reflektor
+GW	3	s	0	0	-Laktiv/2	0	0	0	r	'aktív
+GW	4	11	0	0	0	0	0	kozepso	r	'aktív
+GW	5	s	0	0	kozepso	0	0	Laktiv/2	r	'aktív
+GW	6	s	d	0	-LDIREKTOR/2	d	0	0	R	'Direktor
+GW	7	s	d	0	0	d	0	LDIREKTOR/2	R	'direktor
+GW	8	s	-d	0	0	0	0	0	RNAGY	'boom
+GW	9	s	0	0	0	d	0	0	RNAGY	'boom
+GW	10	2	0	0	0	0	GAMMA	0	R	'gamma illesztés
+GW	11	2	0	0	KOZEPSO	0	GAMMA	KOZEPSO	R	'gamma illesztés
+GW	12	11	0	GAMMA	0	0	GAMMA	KOZEPSO	R	'Gamma illesztés
+GE	0
+LD	5	0	0	0	37700000
+LD	4	12	2	2	0	-11.2
+GN	-1
+EK
+EX	0	12	1	0	1000	0	0	0
+FR	0	0	0	0	145	0
+EN

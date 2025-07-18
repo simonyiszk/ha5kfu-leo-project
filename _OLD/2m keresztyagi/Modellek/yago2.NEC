@@ -1,0 +1,53 @@
+CM 
+CE
+SY d=0.415	'2 szomszédos elem távolsága
+SY Lreflektor=1.025	'A reflektor hossza
+SY Laktiv=0.972	'Az aktív elem hossza
+SY Ldirektor=0.920	'A direktor hossza
+SY r=0.004	'Az elemek sugara. A könyv szerint 2.5-4mm lehet.
+SY s=11	'Szegmensek száma
+SY lambdanegyed=0.5172	'145 MHz-en a negyedhullám
+SY kozepso=0.132	'A gamma-illesztés hossza
+SY RNAGY=0.010	'A boom sugara
+SY GAMMA=0.020	'A gamma illesztés távolsága a boomtól
+SY X=-11.2
+SY DANTENNA=2	'Antennák távolsága
+SY RFORG=0.015	'Forgató rúd R
+SY DFORG=2	'Antennaforg tengely hossz
+GW	1	s	-d	0	-Lreflektor/2	-d	0	0	r	'reflektor
+GW	2	s	-d	0	0	-d	0	Lreflektor/2	r	'reflektor
+GW	3	s	0	0	-Laktiv/2	0	0	0	r	'aktív
+GW	4	11	0	0	0	0	0	kozepso	r	'aktív
+GW	5	s	0	0	kozepso	0	0	Laktiv/2	r	'aktív
+GW	6	s	d	0	-LDIREKTOR/2	d	0	0	R	'Direktor
+GW	7	s	d	0	0	d	0	LDIREKTOR/2	R	'direktor
+GW	10	2	0	0	0	0	GAMMA	0	R	'gamma illesztés
+GW	11	2	0	0	KOZEPSO	0	GAMMA	KOZEPSO	R	'gamma illesztés
+GW	12	11	0	GAMMA	0	0	GAMMA	KOZEPSO	R	'Gamma illesztés
+GM	20	1	90	0	0	lambdanegyed	0	0	1	'Fázistolt tagok
+GW	41	4	-d	0	0	0	0	0	RNAGY	'boom
+GW	42	4	0	0	0	lambdanegyed-d	0	0	RNAGY	'boom
+GW	43	4	lambdanegyed-d	0	0	lambdanegyed/2	0	0	RNAGY	'boom
+GW	44	4	lambdanegyed/2	0	0	d	0	0	RNAGY	'boom
+GW	45	4	d	0	0	lambdanegyed	0	0	RNAGY	'boom
+GW	46	4	lambdanegyed	0	0	lambdanegyed+d	0	0	RNAGY	'boom
+GM	0	0	0	0	0	-lambdanegyed/2	0	-DANTENNA/2	1	'1.ant eltolás
+GM	50	1	0	0	0	0	0	DANTENNA	1	'2.ant létrehozás
+GW	100	18	0	0	-DANTENNA/2	0	0	DANTENNA/2	RFORG	'Antennák tengely
+GM	0	0	0	0	0	0	DFORG/2	0	1	'Antennák eltolása
+GW	1000	18	0	-DFORG/2	0	0	DFORG/2	0	RFORG	'Antennaforg tengely
+GW	1001	18	0	0	-DFORG	0	0	0	RFORG	'Antennaforg tengely
+GE	0
+LD	5	0	0	0	37700000
+LD	4	12	2	2	0	X
+LD	4	32	2	2	0	X
+LD	4	62	2	2	0	X
+LD	4	82	2	2	0	X
+GN	-1
+EK
+EX	0	12	1	0	1000	0	0
+EX	0	32	1	0	6.12e-14	1000	0
+EX	0	62	1	0	1000	0	0
+EX	0	82	1	0	6.12e-14	1000	0
+FR	0	0	0	0	145	0
+EN
